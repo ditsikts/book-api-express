@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+// const { body, validationResult } = require('express-validator/check');
+const { sanitizeBody, body, validationResult } = require('express-validator');
 Book = require('../model/bookModel');
 
 // Handle index actions
@@ -20,8 +20,7 @@ exports.index = function (req, res) {
 };
 // Handle create book actions
 exports.new = [
-    body('title').isLength({ min: 1 }).trim().withMessage('Title must be specified.'),
-    sanitizeBody('title').trim(),
+    body('title').trim().isLength({ min: 1 }).withMessage('Title must be specified.'),
     (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()){
