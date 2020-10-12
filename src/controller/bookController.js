@@ -1,5 +1,5 @@
 // const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody, body, validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 Book = require('../model/bookModel');
 
 // Handle index actions
