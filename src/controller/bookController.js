@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 Book = require('../model/bookModel');
 
 // Handle index actions
-exports.index = function (req, res) {
+exports.index = (req, res) => {
     Book.get(function (err, books) {
         if (err) {
             res.json({
@@ -43,7 +43,7 @@ exports.new = [
     }
 ]
 // Handle view book info
-exports.view = function (req, res) {
+exports.view = (req, res) => {
     Book.findById(req.params.book_id, function (err, book) {
         if (err)
             res.send(err);
@@ -54,7 +54,7 @@ exports.view = function (req, res) {
     });
 };
 // Handle update book info
-exports.update = function (req, res) {
+exports.update = (req, res) => {
     Book.findById(req.params.book_id, function (err, book) {
         if (err)
             res.send(err);
@@ -72,7 +72,7 @@ exports.update = function (req, res) {
     });
 };
 // Handle delete book
-exports.delete = function (req, res) {
+exports.delete = (req, res) => {
     Book.remove({
         _id: req.params.book_id
     }, function (err, book) {
