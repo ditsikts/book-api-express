@@ -11,11 +11,9 @@ exports.index = (req, res) => {
                 message: err,
             });
         }
-        res.json({
-            status: "success",
-            message: "Books retrieved successfully",
-            data: books
-        });
+        res.json(
+             books
+        );
     });
 };
 // Handle create book actions
