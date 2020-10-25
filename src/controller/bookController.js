@@ -46,8 +46,7 @@ exports.view = (req, res) => {
         if (err)
             res.send(err);
         res.json({
-            message: 'Book details loading..',
-            data: book
+            ...(book.toObject())
         });
     });
 };
