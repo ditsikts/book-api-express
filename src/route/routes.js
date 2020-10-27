@@ -9,6 +9,8 @@ router.get('/', function (req, res) {
 // Import book controller
 var bookController = require('../controller/bookController');
 // Book routes
+router.route('/books/search/:search')
+    .get(bookController.search)
 router.route('/books')
     .get(bookController.index)
     .post(bookController.new);

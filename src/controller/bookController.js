@@ -2,6 +2,19 @@
 const { body, validationResult } = require('express-validator');
 Book = require('../model/bookModel');
 
+exports.search = (req, res) => {
+    Book.find({title: {$regex : req.params.search}}, function (err, books) {
+        if (err) {
+            res.json({
+                status: "error",
+                message: err,
+            });
+        }
+        res.json(
+             books
+        );
+    });
+};
 // Handle index actions
 exports.index = (req, res) => {
     Book.get(function (err, books) {
